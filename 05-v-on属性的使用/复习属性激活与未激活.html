@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    li{
+      width: 50px;
+      height: 50px;
+      margin: 20px;
+      display: inline-block;
+      background-color: aquamarine;
+    }
+    ul{
+      text-align: center;
+      margin: 100px 0;
+    }
+    .active{
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li :class="isActive()" @click="isChangeColor()"></li>
+      <li :class="isActive()" @click="isChangeColor()"></li>
+      <li :class="isActive()" @click="isChangeColor()"></li>
+      <li :class="isActive()" @click="isChangeColor()"></li>
+      <li :class="isActive()" @click="isChangeColor()"></li>
+      <li :class="isActive()" @click="isChangeColor()"></li>
+      <li :class="isActive()" @click="isChangeColor()"></li>
+      <li :class="isActive()" @click="isChangeColor()"></li>
+      <li :class="isActive()" @click="isChangeColor()"></li>
+      <li :class="isActive()" @click="isChangeColor()"></li>
+      <li :class="isActive()" @click="isChangeColor()"></li>
+      <li :class="isActive()" @click="isChangeColor()"></li>
+      <li :class="isActive()" @click="isChangeColor()"></li>
+    </ul>
+  </div>
+</body>
+<script src="../JavaScript/vue.min.js"></script>
+<script>
+  const vue=new Vue({
+    el:"#app",
+    data:{
+      isActives:false
+    },
+    methods: {
+      isActive:function(){
+        return {active:this.isActives}
+      },
+      isChangeColor:function(){
+        this.isActives=!this.isActives
+      }
+    },
+  })
+</script>
+</html>

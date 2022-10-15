@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    ul{
+      text-align: center;
+      list-style: none;
+    }
+    li{
+      display: inline-block;
+      margin: 25px 1%;
+      width: 100px;
+      line-height: 50px;
+      background-color: aqua;
+      border-radius: 5px;
+      font-size: 22px;
+      padding: 5px;
+    }
+    .active{
+      color: purple;
+      background-color: azure;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="item,value in list" :class="ChangeLi(value)" @click="ChangeModel(value)" >{{item}}</li>
+    </ul>
+  </div>
+</body>
+<script src="../JavaScript/vue.min.js"></script>
+<script>
+  const vue=new Vue({
+    el:"#app",
+    data:{
+      list:['首页',"工厂介绍","工厂实力","产品中心","新闻中心","联系方式"],
+      thisIndex:-1
+    },
+    methods: {
+      ChangeModel(index) {
+        this.thisIndex = index
+      },
+      ChangeLi(index){
+        if (this.thisIndex == index) {
+            return { active: true }
+        }
+      
+      },
+      
+    },
+  })
+</script>
+</html>

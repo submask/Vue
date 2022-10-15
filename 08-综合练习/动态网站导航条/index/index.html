@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    ul{
+      list-style: none;
+      margin: 0 auto;
+      text-align: center;
+    }
+    li{
+      display: inline-block;
+      margin: 10px 15px;
+      width: 100px;
+      line-height: 50px;
+      border-radius: 10px;
+      background-color: blanchedalmond;
+      font-size: 18px;
+    }
+    .active{
+      background-color: coral;
+      color: #fff;
+      text-decoration: underline;
+    }
+    
+  </style>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="item,index in content" :class="isActive(index)" @mousemove="MouseClickIn(index)">{{item}}</li>
+    </ul>
+  </div>
+</body>
+<script src="../js/vue.min.js"></script>
+<script>
+  const vue=new Vue({
+    el:"#app",
+    data:{
+      content:['首页','公司简介','公司运营','公司财务','员工系统','关于我们'],
+      item_index:-1
+    },
+    methods: {
+      isActive(index){
+        if(this.item_index==index){
+          return {active:true}
+        } 
+      },
+      MouseClickIn(index){
+        this.item_index=index
+      }
+    },
+  })
+</script>
+</html>

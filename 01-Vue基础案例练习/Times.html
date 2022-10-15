@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计时器</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .count{
+            width: 200px;
+            line-height: 200px;
+            font-size: 70px;
+            text-align: center;
+        }
+       button{
+        width: 80px;
+        height: 30px;
+       } 
+       #count{
+        margin: 0 auto;
+
+       }
+    </style>
+</head>
+<body>
+    <div id="count">
+        <h1>点击按扭进行{{version}}</h1>
+        <div class="count">{{num}}</div>
+        <button v-on:click=add>+</button>
+        <button v-on:click="clean">清空</button>
+        <button v-on:click="sub">-</button>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        let vue=new Vue({
+            el:"#count",
+            data:{
+                version:"改变",
+                num:0
+            },
+            methods: {
+                add:function(){
+                    this.version="添加"
+                    this.num+=Math.ceil(Math.random()*100+22);
+                },
+                sub:function(){
+                    this.version="减少"
+                    this.num-=Math.ceil(Math.random()*100+1)
+                },
+                clean:function(){
+                    this.num=0
+                    this.version="改变"
+                }
+            },
+        })
+    </script>
+</body>
+</html>

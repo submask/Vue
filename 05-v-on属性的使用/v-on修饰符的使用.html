@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    div{
+      width: 100px;
+      height: 200px;
+      background-color: antiquewhite;
+    }
+  </style>
+</head>
+<body>
+  <!-- 1、阻止事件冒泡：属性.stop 
+       2、取消表格自动提交 属性.prevent
+       3、当执行一个操作所反应的一个事件
+       4、让这次操作只执行一次
+  -->
+  <div id="app" @click="divcl">
+    <div>
+      <button @click.stop="btncl1">按钮1</button>
+    </div>
+    <div>
+      <form action="https://www.bilibili.com">
+        <input type="submit" value="提交" @click.prevent.stop="submits">
+      </form>
+    </div>
+    <div>
+      <from><input type="text" @keyup.enter="key"></from>
+    </div>
+  </div>
+</body>
+<script src="../JavaScript/vue.min.js"></script>
+<script>
+  const vue=new Vue({
+    el:"#app",
+    methods: {
+      btncl1(){
+        console.log("你在点击按钮");
+      },
+      divcl(){
+        console.log("你在点击div");
+      },
+      submits(){
+        console.log("提交完成");
+      },
+      key(){
+        console.log("执行退出完毕");
+      }
+    },
+  })
+</script>
+</html>

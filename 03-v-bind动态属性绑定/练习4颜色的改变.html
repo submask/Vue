@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .tip,div{
+      width: 200px;
+      line-height: 200px;
+      margin: 20px auto;
+      font-size: 40px;
+      font-weight: bolder;
+      text-align: center;
+      
+    }
+    #app>div{
+      border: 1px solid #ff0;
+    }
+    .tip{
+      text-decoration: underline;
+      border:1px solid rgba(0, 23, 244, 0.5) !important;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div v-on:click="click_on()" :class="ChangeClasses">{{nums}}</div>
+  </div>
+</body>
+<script src="../JavaScript/vue.min.js"></script>
+<script>
+  let vue=new Vue({
+    el:"#app",
+    data:{
+      nums:0,
+      isTip:false,
+    },
+    methods: {
+      click_on:function(){
+        let times=setInterval(()=>{
+        this.nums=Math.ceil(Math.random()*999+1);
+        if (this.nums%2==0&&this.nums%3==0&&this.nums%4==0){
+         this.isTip=!this.isTip
+        }
+        },2000)
+      },
+      ChangeClasses:function (){
+        return {tip:isTip}
+      }
+    },
+  })
+</script>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    ul{
+      list-style: none;
+      
+    }
+    li{
+      margin: 0 20px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <label for="">
+      <input type="checkbox" value="basketball" v-model="ball">篮球
+      <input type="checkbox" value="football" v-model="ball">足球
+      <input type="checkbox" value="table tennis" v-model="ball">乒乓球
+      <ul>
+        <li v-for="balls in ball">{{balls}}</li>
+      </ul>
+      <input type="checkbox" v-model="agree">同意此协议
+    </label>
+    <button :disabled="!agree">下一步</button>
+  </div>
+</body>
+<script src="../JavaScript/vue.min.js"></script>
+<script>
+  const vue=new Vue({
+    el:"#app",
+    data:{
+      agree:false,
+      ball:[]
+    }
+  })
+</script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <!-- 这是select 单选情况下 -->
+    <select name="" id="" v-model="fruit">
+      <option value="葡萄">葡萄</option>
+      <option value="香蕉">香蕉</option>
+      <option value="苹果">苹果</option>
+      <option value="梨子">梨子</option>
+    </select>
+    <h2>你所选择的水果是{{fruit}}</h2>
+    <!-- 这是select 多选情况下 -->
+    <!-- multiple主要是用于在select语句下 输入多个内容 -->
+    <select name="" id="" v-model="Fruit" multiple>
+      <option value="葡萄">葡萄</option>
+      <option value="香蕉">香蕉</option>
+      <option value="苹果">苹果</option>
+      <option value="梨子">梨子</option>
+    </select>
+    <h2>你所选择的水果是{{Fruit}}</h2>
+  </div>
+</body>
+<script src="../JavaScript/vue.min.js"></script>
+<script>
+  const vue=new Vue({
+    el:"#app",
+    data:{
+      fruit:"",
+      Fruit:[]
+    }
+  })
+</script>
+</html>

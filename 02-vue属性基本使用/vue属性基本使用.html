@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    [v-cloak]{
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" v-cloak>
+    {{welcome+" "+name}}
+    <div id="content" v-once>{{content}}</div>
+    <div v-html=html>123</div>
+    <div v-pre>{{you rise me up}}</div>
+    
+  </div>
+  
+</body>
+<script src="../JavaScript/vue.min.js"></script>
+<script>
+  setTimeout(function(){
+    let tip=new Vue({
+    el:"#app",
+    data:{
+      welcome:"你好",
+      name:"李晓晓",
+      content:"欢迎进入到首页",
+      html:"<a href='https://www.bilibili.com'>B站</a>",
+    }
+    
+  })
+  },5000)
+  
+</script>
+</html>

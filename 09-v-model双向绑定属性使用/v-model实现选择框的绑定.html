@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+</head>
+<body>
+  <div id="app">
+    <label for="">
+      <input type="checkbox" v-model="Chicked">同意此协议
+    </label>
+    <div>Chicked属性选择的是：{{Chicked}}</div>
+    <button :disabled="!Chicked">下一步</button>
+  </div>
+</body>
+<script src="../JavaScript/vue.min.js"></script>
+<script>
+  const vue=new Vue({
+    el:"#app",
+    data:{
+      Chicked:false
+    },
+  })
+</script>
+</html>

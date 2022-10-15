@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .active{
+      color: antiquewhite;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" :class="isChangeColor()" @click="btn()">
+    <div>{{hello}}</div>
+  </div>
+</body>
+<script src="../JavaScript/vue.min.js"></script>
+<script>
+  constvue=new Vue({
+    el:"#app",
+    data:{
+      hello:"早上好",
+      isActive:true,
+    },
+    methods: {
+      isChangeColor(){
+        return {active:this.isActive}
+      },
+      btn(){
+        this.isActive=!this.isActive
+      }
+    },
+  })
+</script>
+</html>

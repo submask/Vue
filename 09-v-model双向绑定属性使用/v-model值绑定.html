@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <label for="" v-for="item in list">
+      <input type="checkbox" :name="item" v-model="model"  :value="item"  >{{item}}
+    </label>
+    <br>
+    <label for="" v-for="item in model">
+      <input type="checkbox" :name="item" v-model="model" :value="item">{{item}}
+    </label>
+  </div>
+</body>
+<script src="../JavaScript/vue.min.js"></script>
+<script>
+  const vue=new Vue({
+    el:"#app",
+    data:{
+      list:['苹果','香蕉','栗子','李子','水蜜桃','甘蔗'],
+      model:[]
+    }
+  })
+</script>
+</html>

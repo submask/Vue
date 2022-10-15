@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    #app{
+      margin: 0 33%;
+    }
+    .con,.active{
+      font-size: 20px;
+      font-weight: bolder;
+      width: 200px;
+      height: 50px;
+      padding: 20px;
+      text-align: center;
+    }
+    .con{
+      background-color: cadetblue;
+    }
+    .active{
+      background-color: coral;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div :class="isChange()" v-on:click="change">{{content}}</div>
+  </div>
+</body>
+<script src="../JavaScript/vue.min.js"></script>
+<script>
+  let vue=new Vue({
+    el:"#app",
+    data:{
+      content:"你好呀",
+      isCon:false,
+      isActive:true
+    },
+    methods: {
+      isChange:function(){
+        return {con:this.isCon,active:this.isActive}
+      },
+      change:function(){
+        this.isCon=true
+        this.isActive=!this.isActive
+      }
+    },
+  })
+</script>
+</html>

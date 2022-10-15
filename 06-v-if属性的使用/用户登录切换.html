@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <div>
+      <form action="https://www.baidu.com/s">
+        <div v-if="isChange">
+          <label for="">用户账号</label>
+          <input type="text" placeholder="请输入用户账户" key="username">
+        </div>
+        <div v-else>
+          <label for="">用户邮箱</label>
+          <input type="text" placeholder="请输入用户邮箱" key="email">
+        </div>
+      </form>
+    </div>
+    <button @click="ChangeModel()">切换</button>
+  </div>
+</body>
+<script src="../JavaScript/vue.min.js"></script>
+<script>
+  const vue=new Vue({
+    el:"#app",
+    data:{
+      isChange:true
+    },
+    methods: {
+      ChangeModel(){
+        this.isChange=!this.isChange
+      }
+    },
+  })
+</script>
+</html>

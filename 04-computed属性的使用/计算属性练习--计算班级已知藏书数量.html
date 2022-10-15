@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <div>学生书籍总数量：{{BookCounts}}</div>
+  </div>
+</body>
+<script src="../JavaScript/vue.min.js"></script>
+<script>
+  /*
+    for循环ES6语法格式：for(变量 of 数组)
+    输出数据的插值语法内容调用的是computed的属性
+    
+  */
+  let sum=0
+  let vue=new Vue({
+    el:"#app",
+    data:{
+      items:[
+        {"sid":"2020103501","sname":"陈天恩","sbook":123},
+        {"sid":"2020103502","sname":"窦兴","sbook":6},
+        {"sid":"2020103503","sname":"蒋凯亮","sbook":9},
+        {"sid":"2020103504","sname":"龚浩","sbook":20},
+        {"sid":"2020103505","sname":"聂靖涛","sbook":8},
+        {"sid":"2020103506","sname":"颜瑞景","sbook":10},
+        {"sid":"2020103507","sname":"张可荣","sbook":3},
+        {"sid":"2020103508","sname":"张天赐","sbook":8},
+      ]
+    },
+    computed:{
+      BookCounts:function(){
+        for(let book of this.items){
+          sum+=book.sbook;
+        }
+        return sum
+      }
+    }
+  })
+</script>
+</html>

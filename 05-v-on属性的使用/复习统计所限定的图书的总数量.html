@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    #app{
+      text-align: center;
+    }
+    ul{
+      list-style: none;
+      display: inline-block;
+      margin: 20px 200px;
+    }
+    li{
+      
+      font-weight: bolder;
+      margin: 50px 10px;
+    }
+    div,
+    ul,
+    li{
+      font-size: 22px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li>书籍</li>
+      <li v-for="bok in book">{{bok.bname}}</li>
+    </ul>
+    <ul>
+      <li>数量</li>
+      <li v-for="bok in book">{{bok.count}}</li>
+    </ul>
+    <div>总数量{{isCount}}</div>
+  </div>
+</body>
+<script src="../JavaScript/vue.min.js"></script>
+<script>
+  const vue=new Vue({
+    el:"#app",
+    data:{
+      book:[
+        {bid:"001",bname:"西游记",count:200},
+        {bid:"002",bname:"红楼梦",count:90},
+        {bid:"003",bname:"水吴传",count:230},
+        {bid:"004",bname:"三国演义",count:80},
+      ],
+    },
+    computed:{
+      isCount(){
+        let counts=0
+        for (let i of this.book){
+          counts+=i.count
+        }
+        return counts
+      }
+    }
+    
+  })
+</script>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    input{
+      width: 200px;
+      height: 20px;
+      font-size: 22px;
+      padding: 5px;
+    }
+    .frontChange{
+      color: blueviolet;
+    }
+    .Active{
+      color: yellowgreen;
+    }
+    input[placeholder="请写入提交两字进行回车"]{
+      width: 180px;
+      height: 20px;
+      font-size: 16px;
+      padding: 5px;
+    }
+    button{
+      width: 180px;
+      height: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <form action="https://cn.bing.com/search?q=" id="forms">
+      <input type="text" placeholder="请输入你的查询第一个信息" v-if="TypeChange" key="username" class="frontChange" name="q" :class="isChangeColor()">
+      <input type="text" placeholder="请输入你的查询第二个信息" v-else key="email" name="q" class="frontChange">
+      <button @click.prevent="isTypeChange()">查询切换</button>
+      <input type="text" placeholder="请写入提交两字进行回车" @keypress.enter="Submit" >
+    </form>
+  </div>
+</body>
+<script src="../JavaScript/vue.min.js"></script>
+<script>
+  const vue=new Vue({
+    el:"#app",
+    data:{
+      TypeChange:true,
+      ChangeColor:false
+    },
+    methods: {
+      isTypeChange(){
+        this.TypeChange=!this.TypeChange
+        this.ChangeColor=!this.ChangeColor
+      },
+      isChangeColor(){
+        return {Active:this.isChangeColor}
+      },
+      Submit(event){
+        let word=event.target.value
+        if(word!="提交"){
+          event.target.value="请重新输入"
+        }else{
+          forms.submit()
+
+        }
+      }
+    },
+  })
+</script>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+ <div id="app">
+  <!-- <div>{{fullName}}</div>
+  <div>{{fullName}}</div>
+  <div>{{fullName}}</div>
+  <div>{{fullName}}</div> -->
+
+  <div>{{fullName()}}</div>
+  <div>{{fullName()}}</div>
+  <div>{{fullName()}}</div>
+  <div>{{fullName()}}</div>
+ </div>
+</body>
+ <script src="../JavaScript/vue.min.js"></script>
+<script>
+  let vue=new Vue({
+    el:"#app",
+    data:{
+      surname:"Tom",
+      name:"Json"
+    },
+    methods: {
+      fullName:function(){
+        console.log(123);
+        return this.surname+" "+this.name
+      }
+    },
+    computed:{
+      /*一般传到computed属性里的对象都是get属性，因此如果我们特意想改内容就必须使用set属性*/
+    //  fullName:{
+      
+    //   set:function(val){
+    //     let value=val.split(" ")
+    //     this.surname=value[0]
+    //     this.name=value[1]
+    //     console.log(surname);
+    //   },
+    //   get:function(){
+    //     console.log("123");
+    //     return this.surname+" "+this.name
+    //   }
+    // }
+    }
+  })
+</script>
+</html>

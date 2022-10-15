@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+   <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    #app{
+      text-align: center;
+      display: flex;
+      justify-content: space-between;
+    }
+    div,li{
+            font-size: 22px;
+    }
+    ul{
+      list-style: none;
+      display: inline-block;
+      margin: 20px 50px;
+    }
+    li{
+
+      margin: 10px 200px;
+    }
+    div{
+      margin: 20px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div>
+    <div>复习购买书籍的总价钱</div>
+    <ul>
+      <li v-for="bks in Book">{{bks.bname}}</li>
+    </ul>
+    <ul>
+      <li v-for="bks in Book">{{bks.price}}</li>
+    </ul>
+    <div>总共{{totalPrices}}元</div>
+  </div>
+</body>
+<script src="../JavaScript/vue.min.js"></script>
+<script>
+  const vue=new Vue({
+    el:"#app",
+    data:{
+      Book:[
+        {bid:2132,bname:"云计算理论与实践",price:77},
+        {bid:2442,bname:"Linux从入门到精通",price:133},
+        {bid:2122,bname:"Java项目实战",price:177},
+        {bid:2444,bname:"网络爬虫基础与进阶",price:155},
+        {bid:2765,bname:"爬虫与反爬虫",price:99},
+        {bid:2990,bname:"C primer",price:88},
+        {bid:2134,bname:"Python项目实战",price:77},
+      ]
+    },
+    computed:{
+      totalPrices(){
+        let count=0;
+        let Books
+        for (Books of this.Book){
+          count+=Books.price
+        }
+        console.log(Books.bid);
+        return count
+      }
+    }
+  })
+</script>
+</html>

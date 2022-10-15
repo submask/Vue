@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <img v-bind:src="href" alt="">
+    <a v-bind:href="aLinkHref">{{name}}</a>
+    <img :src="imgHref" alt="">
+  </div>
+</body>
+<script src="../JavaScript/vue.min.js"></script>
+<script>
+  let vue=new Vue({
+    el:"#app",
+    data:{
+      href:"https://vuejs.bootcss.com/images/components.png",
+      name:"百度",
+      aLinkHref:"https://www.baidu.com",
+      imgHref:"https://ts1.cn.mm.bing.net/th/id/R-C.28698ff68d29b24c4c26f8bd14b5de22?rik=DF9oROk0o62kUQ&riu=http%3a%2f%2fblog.amio.io%2fcontent%2fimages%2f2019%2f06%2fvue-3.png&ehk=P0xnsaLXQzpjJSzeLmoTeRFH3HL%2f9pypNxzgk6F8T%2fU%3d&risl=&pid=ImgRaw&r=0"
+    }
+  })
+</script>
+</html>

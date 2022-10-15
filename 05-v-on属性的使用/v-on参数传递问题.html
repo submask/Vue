@@ -1,0 +1,47 @@
+<!-- 
+  1、当方法需要参数而不传参那么默认就会传递event对象
+  2、当方法需要两个以上参数，并且传递event对象，那么就需要手动传递event对象：$event
+  3、传递什么参数就打印什么参数
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .change{
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <button @click="clickon(1)">按钮1</button>
+    <button @click="clickon(1,$event)" class="">按钮2</button>
+    <button @click="clickon3">按钮3</button>
+  </div>
+</body>
+<script src="../JavaScript/vue.min.js"></script>
+<script>
+  const vue=new Vue({
+    el:"#app",
+    methods: {
+      clickon(val,event){
+        if(event.target.className=="" ){
+          event.target.className="change"
+          
+        }
+      },
+      clickon3(val){
+        console.log(val);
+      }
+    },
+  })
+</script>
+</html>

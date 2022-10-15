@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <form action="https://www.baidu.com/s" name="frm">
+      <input type="text" placeholder="请回车后进入查询窗口" name="num" @keypress.enter.prevent="KeyDownThings" v-if="ChangeIf" key="num">
+      <input type="text" placeholder="请输入你想要查询的数据" name="wd" @keypress.enter.prevent="Submit()" v-else  key="passwd">
+    </form>
+  </div>
+</body>
+<script src="../JavaScript/vue.min.js"></script>
+<script>
+  const vue=new Vue({
+    el:"#app",
+    data:{
+      ChangeIf:true
+    },
+    methods: {
+      KeyDownThings(){
+        this.ChangeIf=false
+        
+      },
+      Submit(){
+        frm.submit()
+      }
+    },
+  })
+</script>
+</html>

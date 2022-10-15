@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <select   v-model="Selection">
+      <option v-for="item in Chicked">{{item}}</option>
+      {{Selection}}
+    </select>
+    <label for="">
+      <input type="checkbox" value="云计算概论" v-model="Chicked">云计算概论
+      <input type="checkbox" value="HTML入门初始" v-model="Chicked">HTML入门初始
+      {{Chicked}}
+    </label>
+  </div>
+</body>
+<script src="../JavaScript/vue.min.js"></script>
+<script>
+  const vue=new Vue({
+    el:"#app",
+    data:{
+      Chicked:[],
+    }
+  })
+</script>
+</html>

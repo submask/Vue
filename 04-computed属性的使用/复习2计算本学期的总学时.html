@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    ul{
+      display: inline-block;
+      margin:20px;
+      list-style: none;
+    }
+    li{
+      margin: 33.33px 100px;
+    }
+    div,
+    li,
+    .title{
+        font-size: 22px;
+    }
+    #app{
+      text-align: center;
+    }
+    [v-cloak]{
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" v-cloak>
+    <div class="title">大三大数据专业课程</div>
+    <ul>
+      <li>课程号</li>
+      <li v-for="index in course" >{{index.cid}}</li>
+    </ul>
+    <ul>
+      <li>课程名</li>
+      <li v-for="index in course">{{index.cname}}</li>
+    </ul>
+    <ul>
+      <li>学分</li>
+      <li v-for="index in course">{{index.ctime}}</li>
+    </ul>
+    <div>总学分：{{total}}</div>
+  </div>
+</body>
+<script src="../JavaScript/vue.min.js"></script>
+<script>
+  let Counts=0
+  let vue=new Vue({
+    el:"#app",
+    data:{
+      course:[
+        {cid:"202201",cname:"响应式网页设计",ctime:2},
+        {cid:"202202",cname:"大数据原理与应用",ctime:4},
+        {cid:"202203",cname:"数据仓库与数据挖掘",ctime:4},
+        {cid:"202204",cname:"数据库管理",ctime:2},
+        {cid:"202205",cname:"大数据认证",ctime:2},
+        {cid:"202206",cname:"网络爬虫",ctime:4},
+
+      ]
+    },
+    computed:{
+      total:{
+        get:function(){
+         for (let index of this.course){
+          Counts+=index.ctime
+         }
+         return Counts
+        }
+      }
+    }
+  })
+</script>
+</html>

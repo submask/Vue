@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <!-- 1、不需要实时输入只需要回车时传递即可 -->
+    <input type="text" v-model.lazy="model">
+    <br>
+    <!-- 2、将v-model所传递的字符串转化成数值型 -->
+    <input type="text" v-model.number="num" @keyup="isNumbers(num)">
+    <div>
+      你所输入的{{num}}内容是{{isNumber}}类型
+    </div>
+    <div>
+      你输入的内容是{{model}},
+    </div>
+    <!-- 3、将输入文本中的左右两边空格去除掉 -->
+    <input type="text"  v-model.trim="text">
+    你输入的文本内容是{{text}}
+  </div>
+</body>
+<script src="../JavaScript/vue.min.js"></script>
+<script>
+  const vue=new Vue({
+    el:"#app",
+    data:{
+      model:"",
+      num:0,
+      isNumber:"",
+      text:""
+    },
+    methods: {
+      isNumbers(val) {
+        if(typeof(val)=="string"){
+          this.isNumber="字符"
+        }else{
+          this.isNumber="数值"
+        }
+      }
+    },
+  })
+</script>
+</html>

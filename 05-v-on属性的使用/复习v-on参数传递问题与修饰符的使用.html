@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    button{
+      margin: 10px 20px;
+    }
+    #app{
+      display: flex;
+    }
+    
+    input,
+    button{
+      width: 100px;
+      height: 30px;
+    }
+    input{
+      width: 200px;
+      padding: 0 10px;
+      font-size: 22px;
+    }
+    .btn{
+      width: 300px;
+      height: 100px;
+      background-color: bisque;
+    }
+  </style>
+</head>
+<body>
+  <!-- 
+    stop阻止事件冒泡
+    事件.keycode/keyname 执行某个内容自动进行操作响应
+    prevent阻止表单自动提交
+    once当前内容只执行一次
+   -->
+  <div id="app">
+    <button @click="btnC1(1)">参数传递1</button>
+    <button @click="btnC2">参数传递2</button>
+    <button @click="btnC3(1,$event)">参数传递3</button>
+    <!-- 手动传递当前点击事件 $event-->
+    <div class="btn" @click="Btnmp()">
+      <button @click.stop="BtnMp()">停止事件冒泡</button>
+    </div>
+    <div class="form">
+      <form action="https://www.baidu.com/s">
+        <input type="text" placeholder="请输入数据后搜索内容" name="wd" @keyup.enter="submit()">
+        <button type="submit" @click.prevent>提交</button>
+      </form>
+    </div>
+  </div>
+</body>
+<script src="../JavaScript/vue.min.js"></script>
+<script>
+  const vue=new Vue({
+    el:"#app",
+    methods: {
+      btnC1(val){
+        console.log(val);
+      },
+      btnC2(val){
+        console.log(val.target);
+      },
+      btnC3(val,event){
+        console.log(val,event.target);
+      },
+      BtnMp(){
+        console.log("正在单击按钮");
+      },
+      Btnmp(){
+        console.log("正在单击div");
+      },
+      submit(){
+        console.log("提交数据成功");
+      }
+    },
+  })
+</script>
+</html>

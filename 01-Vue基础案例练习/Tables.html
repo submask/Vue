@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表格</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        table{
+            font-size: 20px;
+            margin: 25% auto;
+            width: 400px;
+            height: 100px;
+            text-align: center;
+            border:none ;
+        }
+        
+    </style>
+</head>
+<body>
+    <table cellspacing="5" cellpadding="10" border="1px solid #f00" id="tables">
+        <tr>
+            <td v-for="name in names" >{{name}}</td>
+        </tr>
+        <tr>
+            <td v-for="items in item">{{items}}</td>
+        </tr>
+    </table>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    let table=new Vue({
+        el:"#tables",
+        data:{
+            names:["数慧","艺术","品味"],
+            item:["价值","人生","思想"],
+        }
+    })
+</script>
+</html>

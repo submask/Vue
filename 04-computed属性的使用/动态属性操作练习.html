@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>标签的变化</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    #app{
+      text-align: center;
+    }
+    button{
+      width: 100px;
+      height: 50px;
+      margin: 0 20px;
+      font-size: 18px;
+      border: none;
+      background-color: bisque;
+      border-radius: 5px;
+      float: none;
+    }
+    .content,
+    .hello{
+      border: 1px double #f00;
+      border-radius: 10px;
+      margin: 20px auto;
+    }
+    .content{
+      width: 200px;
+      line-height: 200px;
+      display: inline-block;
+      margin: 10px 50px;
+      text-align: center;
+    }
+    .hello{
+      width: 80px;
+      line-height: 50px;
+    }
+    .active{
+      color: #f00;
+      font-weight: bolder;
+    }
+    [v-cloak]{
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" v-cloak>
+    <div class="content" :class="getClasses()"   v-for="cons in datas">
+      {{cons}}
+    </div>
+    <div>
+      <button @click="defines()">确定</button>
+      <button @click="cancels()">取消</button>
+    </div>
+
+  </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  let vue=new Vue({
+      el:"#app",
+      data:{
+        html:`
+      <div class="hello">
+        你好呀
+      </div>
+        `,
+        datas:["网站建设中","网站建设中","网站建设中","网站建设中","网站建设中","网站建设中","网站建设中"],
+        isActive:false
+      },
+      methods: {
+        defines(){
+          this.isActive=true
+        },
+        cancels(){
+          this.isActive=false
+        },
+        getClasses(){
+          return {active:this.isActive}
+        }
+      },
+  })
+</script>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    ul{
+      list-style: none;
+      text-align: center;
+      margin: 20px 0;
+    }
+    li{
+      font-size: 22px;
+      font-weight: bolder;
+      margin: 20px auto;
+      width: 200px;
+      height: 30px;
+      background-color: aqua;
+      padding: 20px;
+    }
+    .active{
+      background-color: blanchedalmond;
+    }
+  </style>
+</head>
+<body>
+  <ul id="app">
+    <li v-for="li,i in lists" :class="isClass()" v-on:click="change(i)">{{li}}</li>
+  </ul>
+</body>
+<script src="../JavaScript/vue.min.js"></script>
+<script>
+  let vue=new Vue({
+    el:"#app",
+    data:{
+      lists:["Vue框架设计","大数据原理与应用","数据仓库与数据挖掘","数据库管理","大数据认证","网络爬虫"],
+      isActive:true,
+      },
+    methods: {
+      change:function(i){
+        this.isActive=!this.isActive
+        console.log(i);
+      },
+      isClass:function(){
+        return {active:this.isActive}
+      }
+    },
+    }
+  )
+</script>
+</html>

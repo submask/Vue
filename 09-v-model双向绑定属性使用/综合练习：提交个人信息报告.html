@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    table{
+      border-collapse: collapse;
+      margin: 20px auto;
+    }
+    tr,td{
+      border: 1px solid black;
+      width: 100px;
+      height: 50px;
+      text-align: center;
+      font-size: 20px;
+    }
+    .active{
+      background-color:bisque;
+    }
+    input[type="checkbox"]{
+      margin: 0 auto;
+    }
+    .Chicked{
+      text-align: center;
+    }
+    button{
+      width: 100px;
+      line-height: 50px;
+      border: 1px solid rgb(218, 209, 209);
+      border-radius: 10px;
+      font-size: 22px;
+      margin-top: 20px;
+    }
+    button:hover{
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <table>
+      <tr>
+        <td></td>
+        <td>姓名</td>
+        <td>性别</td>
+        <td>年级</td>
+        <td>班级</td>
+        <td>备注</td>
+      </tr>
+      <tr v-for="item,index in list" :class="ChangeColors(index)" @click="ChangeColor(index)">
+        <td>{{item.id}}</td>
+        <td>{{item.name}}</td>
+        <td >
+          {{Sex_index[index]}}
+        </td>
+        <td>{{item.grade}}</td>
+        <td>{{item.class}}</td>
+        <td>{{item.text}}</td>
+      </tr>
+    </table>
+    <div class="Chicked">
+      <label for="">
+        <input type="checkbox" v-model="agree">
+        请仔细阅读协议后进入下一步
+      </label>
+      <br>
+      <button :disabled="!agree">下一步</button>
+    </div>
+  </div>
+</body>
+<script src="../JavaScript/vue.min.js"></script>
+<script>
+  const vue=new Vue({
+    el:"#app",
+    data:{
+      list:[
+        { id: 1, name: "陈晓", sex: 0, grade: 20, class: 5,  text: "" },
+        { id: 2, name: "张三", sex: 1, grade: 21, class: 5, text: "" },
+        { id: 3, name: "李四", sex: 1, grade: 19, class: 1, text: "" },
+        { id: 4, name: "王五", sex: 1, grade: 20, class: 2, text: "" },
+        { id: 5, name: "潇潇", sex: 0, grade: 22, class: 3, text: "" },
+      ],
+      isActive:false,
+      this_index:-1,
+      Sex_index:"",
+      agree:false,
+    },
+    methods: {
+      ChangeColor(index){
+        this.this_index=index
+      },
+      ChangeColors(index){
+        if(this.this_index==index){
+          if(this.list[index].sex==0){
+            this.Sex_index="女"
+          }else{
+            this.Sex_index="男"
+          }
+          return {active:true}
+        }
+      },
+    },
+  })
+</script>
+</html>

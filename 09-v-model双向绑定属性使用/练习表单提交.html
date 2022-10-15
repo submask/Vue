@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .btn{
+      display: flex;
+    }
+    button{
+      margin: 0 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <form action="../05-v-on属性的使用/v-on参数传递问题.html" name="Frm">
+      <div v-if="isChange">
+        用户名：<input type="text" name="user" v-model="user">
+        <div>
+          密码：<input type="password" name="pwd" v-model="user_pwd" key="user_pwd">
+        </div>
+      </div>
+      <div v-else>
+        用户邮箱：<input type="text" name="email" v-model="email">
+        <div>
+          密码：<input type="password" name="pwd" v-model="email_key" key="email_key">
+        </div>
+      </div>
+      <input type="checkbox" v-model="agree">是否同意此协议
+      <div class="btn">
+        <button @click.prevent="Put_Submit(user)" :disabled=!agree>提交</button>
+        <button @click.prevent="Change()">切换</button>
+      </div>
+    </form>
+  </div>
+</body>
+<script src="../JavaScript/vue.min.js"></script>
+<script>
+  const vue=new Vue({
+    el:"#app",
+    data:{
+      isChange:true,
+      user:"",
+      user_pwd:"",
+      email_key:"",
+      email:"",
+      agree:false
+    },
+    methods: {
+      Change(){
+        this.isChange=!this.isChange
+        this.user_pwd=""
+        this.email_key=""
+      },
+      Put_Submit(user){
+        
+        if(user.length<4 ){
+          alert("你的用户名太短，请重新输入")
+          this.user=""
+          
+        }
+        else{
+          if (this.email==""){
+            this.email==null
+          }
+          info = `你的用户是${this.user},\n你的邮箱是${this.email}`
+          alert(info)
+          this.user=""
+          this.user_pwd=""
+          this.email=""
+          this.email_key=""
+        }
+      }
+    },
+  })
+</script>
+</html>

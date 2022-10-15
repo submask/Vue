@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    #app{
+      text-align: center;
+    }
+    div,li{
+            font-size: 22px;
+    }
+    ul{
+      list-style: none;
+      display: inline-block;
+      margin: 20px 50px;
+    }
+    li{
+      margin: 50px 200px;
+    }
+    div{
+      margin: 20px 0;
+    }
+  </style>
+  <!--  
+    注意点
+    1、可以使用插值语法输出对象数组里面的值
+    2、统计数据格式[{}]
+  -->
+</head>
+<body>
+  <div id="app">
+    <div>统计所现有的书籍藏书量</div>
+    <ul>
+      <li v-for="books in boks">{{books.bn}}</li>
+    </ul>
+    <ul>
+      <li v-for="num in boks">{{num.sum}}</li>
+    </ul>
+    <div>总共藏书{{C_Book}}</div>
+  </div>
+</body>
+<script src="../JavaScript/vue.min.js"></script>
+<script>
+  let count=0
+  const vue=new Vue({
+    el:"#app",
+    data:{
+      boks:[
+        {bid:01,bn:"朝花夕拾",sum:20},
+        {bid:02,bn:"战争与和平",sum:77},
+        {bid:03,bn:"西游记",sum:32},
+        {bid:04,bn:"鲁滨逊漂流记",sum:88},
+        {bid:05,bn:"朝花夕拾",sum:45},
+        {bid:06,bn:"骆驼祥子",sum:45},
+        {bid:07,bn:"巴黎圣母院",sum:44}
+      ]  
+    },
+    computed:{
+      C_Book(){
+        let count=0
+        for(let bk of this.boks){
+          count+=bk.sum
+        }
+        // for (let index = 0; index < this.boks.length; index++) {
+        //   console.log(index);
+        // }
+        return count
+      }                                                                   
+    }
+  })
+</script>
+</html>

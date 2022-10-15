@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+  </div>
+</body>
+<script src="../JavaScript/vue.min.js"></script>
+<script>
+  // filter对li的数据进行过滤
+  //map对数值进行操作*2
+  //reduce对数值进行累加操作
+  const li=[1,2,3,4,5,6,7,8,9]
+  let result=li.filter(function(li){
+    return li<5
+  }).map(
+    function(n){
+      return n*2
+    }
+  ).reduce(function(pre,n){
+    return n+pre
+  },0)
+  console.log(result);
+</script>
+</html>

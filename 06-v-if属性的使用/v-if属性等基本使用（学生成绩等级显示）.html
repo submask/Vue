@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      font-size: 22px;
+    }
+    .part{
+      text-align: center;
+    }
+    ul{
+      display: inline-block;
+      list-style: none;
+      
+      margin: 5% 20%;
+    }
+    li{
+      margin: 30% 0;
+    }
+    [v-cloak]{
+      display:none
+    }
+  </style>
+</head>
+<body>
+  <div id="app" v-cloak>
+    <div class="part">
+      <div>下列选中学生的成绩等级为</div>
+      <ul>
+        <li>学生</li>
+        <li v-for="stus in stu" >{{stus.stuname}}</li>
+      </ul>
+      <ul>
+        <li>成绩</li>
+        <li v-for="stus in stu" @click="Change_Score">{{stus.score}}</li>
+      </ul>
+     <div>你的成绩等级是{{Grade_Score}}</div>
+    </div>
+  </div>
+</body>
+<script src="../JavaScript/vue.min.js"></script>
+<script>
+  const vue=new Vue({
+    el:"#app",
+    data:{
+      stu:[
+        {stuid:201,stuname:"张三",score:98},
+        {stuid:202,stuname:"李四",score:87},
+        {stuid:203,stuname:"王五",score:67},
+        {stuid:204,stuname:"老七",score:88},
+        {stuid:205,stuname:"琪琪",score:90},
+      ],
+      score:0
+    },
+    methods: {
+      Change_Score(event){
+        this.score=event.target.innerText
+      },
+    },
+    computed:{
+      Grade_Score(){
+        if(this.score>=90 && this.score<=100){
+          return "优秀"
+        }else if(this.score>=80){
+          return "中等"
+        }else if(this.score>=70){
+          return "良好"
+        }else if(this.score>=60){
+          return "及格"
+        }else{
+          return "不及格"
+        }
+      },
+      
+    }
+  })
+</script>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .model{
+            text-align: center;
+            font-size: 40px;
+            margin: 20px;
+        }
+        .item::after{
+            content: "123";
+            display: block;
+            clear: both;
+            height: 0;
+            visibility: hidden;
+        }
+        .item{
+            display: inline-block;
+            flex: 1;
+        }
+        .name,
+        .price{
+            font-size: 30px;
+            margin: 20px;
+        }
+        .price{
+            text-align: right;
+            margin-right: 20px;
+        }
+        .name{
+            text-align: left;
+            margin-left: 20px;
+        }
+        .items{
+            display: flex;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="model">{{message}}</div>
+    <div class="items">
+        <div class="item">
+            <div class="name" v-for="names in name">{{names}}</div>
+        </div>
+        <div class="item">
+           <div class="price" v-for="prices in price">{{prices}}</div>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    let tables=new Vue({
+        el:".model",
+        data:{
+            message:"水果价格表"
+        }
+    })
+    let item=new Vue({
+        el:".items",
+        data:{
+            name:["苹果","香蕉","桃子","李子","山竹","樱桃","葡萄","西瓜"],
+            price:["10￥","3￥","5￥","7￥","13￥","12￥","8￥","10￥"],
+        }
+    })
+</script>
+</html>

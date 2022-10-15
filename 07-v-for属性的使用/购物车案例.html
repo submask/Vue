@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    table{
+      margin: 0 auto;
+      border-collapse: collapse;
+    }
+    tr,td{
+      border: 1px solid #000;
+      width: 80px;
+      height: 20px;
+      padding: 10px;
+      text-align: center;
+      font-size: 18px;
+    }
+    .table_title{
+      background-color: rgba(247, 246, 247);
+    }
+    .price{
+      display: inline-block;
+      font-size: 12px;
+    }
+    .pr_Btn{
+      width: 30px;
+      background-color: rgb(252,254,254);
+      border: 1px solid rgb(246,246,246);
+      border-radius: 5px;
+    }
+    button{
+      width: 50px;
+    }
+    /* 
+    规范用名
+    数组对象---books
+    for使用对象---bok
+
+    */
+  </style>
+</head>
+<body>
+  <div id="app">
+  <div v-if="books.length">
+    <table>
+      <!-- 表头 -->
+      <tr class="table_title">
+        <td class="first"></td>
+        <td style="width:200px">书籍名称</td>
+        <td>出版日期</td>
+        <td style="text-align:left">价格</td>
+        <td style="width:150px">购买数量</td>
+        <td>操作</td>
+      </tr>
+      <!-- 表格内容 -->
+      <tr v-for="bok,index in books">
+        <td>{{bok.bid}}</td><!-- 图书序号 -->
+        <td>{{bok.bname}}</td><!-- 书籍名称 -->
+        <td>{{bok.datas}}</td><!-- 价格 -->
+        <td>{{bok.price|Filterprice(bok.price)}}</td><!-- 购买价格 -->
+        <td><!-- 购买数量 -->
+          <button class="pr_Btn" @click="isAddBtn(index)">+</button>
+          <div class="price">{{bok.count}}</div>
+          <button class="pr_Btn" @click="isRemovedBtn(index)" :style="">-</button>
+        </td>
+        <td>
+          <button @click="isRemove(index)">移除</button>
+        </td>
+      </tr>
+    </table>
+    <h2>总价格为：{{TotalPrice}}</h2>
+  </div>
+  <div v-else>
+    <h2>购物车已被清空</h2>
+  </div>
+  </div>
+</body>
+<script src="../JavaScript/vue.min.js"></script>
+<script src="../JavaScript/Shop_list.js"></script>
+</html>

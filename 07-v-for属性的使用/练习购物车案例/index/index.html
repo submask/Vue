@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>购物清单</title>
+  <link rel="stylesheet" href="../css/css.css">
+</head>
+
+<body>
+  <!-- tr 为行，td 为列 -->
+  <div id="app">
+    <div v-if="list.length">
+      <h2>教材购物清单</h2>
+      <table>
+        <!-- 表头区域 -->
+        <tr class="header">
+          <td>教材编号</td>
+          <td>教材名称</td>
+          <td>教材出版日期</td>
+          <td>教材价格</td>
+          <td>数量</td>
+          <td>操作</td>
+        </tr>
+        <!-- 表格内容区域 -->
+        <tr v-for="item,index in list">
+          <td>{{item.bid}}</td>
+          <td class="bookname">{{item.bna}}</td>
+          <td>{{item.dates}}</td>
+          <td>{{item.price|PriceFilters}}</td>
+          <td class="counts">
+            <button @click="addBc(index,$event)" >+</button>
+            {{item.couts}}
+            <button @click="delBc(index,$event)" >-</button>
+          </td>
+          <td class="btn">
+            <button @click="RemoveItem(index)">移除</button>
+          </td>
+        </tr>
+      </table>
+      <h2>总价钱:{{TotalPrice()|PriceFilters}}</h2>
+    </div>
+    <h2 v-else>你的购物清单已为空</h2>
+  </div>
+</body>
+<script src="../js/vue.min.js"></script>
+<script src="../js/index.js"></script>
+
+</html>

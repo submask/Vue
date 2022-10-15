@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    ul{
+      display: flex;
+      list-style: none;
+      justify-content: center;
+    }
+    li{
+      margin:1%;
+      font-size: 22px;
+      width: 200px;
+      line-height: 50px;
+      text-align: center;
+      background-color: aqua;
+      border-radius: 5px;
+      text-decoration: underline;
+    }
+    .active{
+      background-color:wheat;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="(item,index) in list" :style=li() @click="Clickme(index)" :class="ChangeModel(index)">{{item}}</li>
+    </ul>
+  </div>
+</body>
+<script src="../JavaScript/vue.min.js"></script>
+<script>
+  new Vue({
+    el:"#app",
+    data:{
+      list:["首页","番剧","直播","游戏","会员购","产品名称","产品借鉴","关于我们"],
+      FColor:"#fff",
+      courseindex:-1,
+      isActive:true
+    },
+    methods: {
+      li(){
+        return {color:this.FColor}
+      },
+      Clickme(index){
+        this.courseindex=index
+        
+       },
+       ChangeModel(index){
+        if(index==this.courseindex){
+          return {active:this.isActive}
+        } 
+      }
+      },
+    },
+  )
+</script>
+</html>

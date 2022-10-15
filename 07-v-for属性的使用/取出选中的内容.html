@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    #app{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    ul{
+      width: 80%;
+      height: 200px;
+      border: 1px solid #000;
+      margin: 20px 0;
+      overflow-y: scroll;
+    }
+    li{
+      
+      font-size: 18px;
+      width: 80px;
+      line-height: 50px;
+      background-color: red;
+      display: inline-block;
+      margin: 20px;
+      border-radius: 10px;
+      text-align: center;
+      cursor:pointer;
+    }
+    button{
+      width: 100px;
+      height: 50px;
+    }
+    .btn{
+      display: flex;
+    }
+    button{
+      margin: 0 100px;
+    }
+    .active{
+      background-color: blanchedalmond;
+      color: #fff;
+    }
+    
+  </style>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="num,value in list" @click="Clickme(value,$event)" :class="SetClasses(value)">{{num}}</li>
+    </ul>
+    <div class="btn">
+      <button @click="LoadDatas()">载入数据</button>
+      <button @click="ClearDates()">清空数据</button>
+    </div>
+    <div>
+      <ul v-for="value in li_new_list" style="width:0;height:0">
+        <li>{{value}}</li>
+      </ul>
+    </div>
+  </div>
+</body>
+<script src="../JavaScript/vue.min.js"></script>
+<script>
+  const vue=new Vue({
+    el:"#app",
+    data:{  
+      list:[],
+      li_new_list:[],
+      thisIndex:-1,
+      ChangeColor: { active: true }
+    },
+    methods: {
+      LoadDatas(){
+        for (let i=0;i<100;i++){
+          let num=Math.ceil(Math.random()*100+10)
+          this.list.push(num)
+        }
+      },
+      ClearDates(){
+        this.list=[]
+         this.li_new_list = []
+      },
+      Clickme(index,event){
+        this.thisIndex=index
+        this.li_new_list.push(event.target.innerText + ",")  
+      },
+      SetClasses(value){
+        if(this.thisIndex==value){
+          return this.ChangeColor
+        }
+      }
+    },
+  })
+</script>
+</html>

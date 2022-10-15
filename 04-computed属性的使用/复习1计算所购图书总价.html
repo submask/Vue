@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    你所购买的图书需要{{total}}元
+  </div>
+</body>
+<script src="../JavaScript/vue.min.js"></script>
+<script>
+  let sum=0
+  let fun=new Vue({
+    el:"#app",
+    data:{
+      books:[
+        {bid:"01",bname:"会计基础与进阶",bprice:30},
+        {bid:"02",bname:"C语言从入门到精通",bprice:50},
+        {bid:"03",bname:"C语言基础",bprice:200},
+        {bid:"04",bname:"java从小白到大神",bprice:122},
+      ]
+    },
+    computed:{
+      total:function(){
+        for(let book of this.books){
+          sum+=book.bprice
+        }
+        return sum
+      }
+    }
+  }
+)
+</script>
+</html>

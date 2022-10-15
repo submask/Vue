@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <!-- 
+      多选框中单选只能表示true或false，
+      多选框中多选如下
+     -->
+    <div>
+      <label for="">
+        水果：
+        <input type="checkbox" value="apple" v-model="fruit">苹果
+        <input type="checkbox" value="plum" v-model="fruit">李子
+        <input type="checkbox" value="pear" v-model="fruit">梨子
+      </label>
+      你选择的水果有{{fruit}}
+    </div>
+    <!-- 
+      组合框使用multiple实现多选
+     -->
+    <div>
+      <select name="" id="" v-model="type" multiple>请选择类别
+        <option value="文科">文科</option>
+        <option value="理科">理科</option>
+        <option value="工科">工科</option>
+      </select>
+      你选择的类别有{{type}}
+    </div>
+  </div>
+</body>
+<script src="../JavaScript/vue.min.js"></script>
+<script>
+  const vue=new Vue({
+    el:"#app",
+    data:{
+      fruit:[],
+      type:[]
+    }
+  })
+</script>
+</html>
