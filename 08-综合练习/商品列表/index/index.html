@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .item,
+    ul,
+    .bottom{
+      margin: 0 auto;
+    }
+    ul{
+      width: 400px;
+      background-color: aqua;
+      list-style: none;
+    }
+    h2{
+      text-align: center;
+      padding: 30px 0;
+    }
+
+    li{
+      width: 80%;
+      height: 50px;
+      background-color: #fff;
+      margin: 20px auto;
+      display: flex;
+      font-size: 18px;
+    }
+    .bottom{
+      font-size: 18px;
+      width: 80%;
+      border-top: 1px solid #000;
+      display: flex;
+    }
+    .left,.right{
+      margin: 15px 0;
+    }
+    .left,li>.left{
+      width: 80%;
+
+       text-align: left;
+       flex: 1;
+       padding-left: 20px;
+    }
+    .right,li>.right{
+      width: 80%;
+      text-align: right;
+      flex:1;
+      padding-right: 20px;
+    }
+    li>.left,li>.right{
+      flex: 1;
+      display: inline-block;
+    }
+    .active{
+      background-color: red;
+      color: #fff;
+    }
+    [v-cloak]{
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="item" v-cloak>
+      <ul>
+        <h2>商品列表</h2>
+        <li v-for="items,index in list" @click="isChange(index)" :class="isChangeColor(index)">
+          <div class="left">{{items.item}}</div>
+          <div class="right">{{items.price}}</div>
+        </li>
+        <div class="bottom">
+          <div class="left">合计：</div>
+          <div class="right">{{Total_Price}}</div>
+        </div>
+      </ul>
+    </div>
+  </div>
+</body>
+<script src="../js/vue.min.js"></script>
+<script>
+  const vue=new Vue({
+    el:"#app",
+    data:{
+      list:[
+        {item:"苹果手机",price:6000, isActive: false},
+        { item: "一加手机", price: 5000, isActive: false},
+        { item: "oppo手机", price: 4000 , isActive: false},
+        { item: "vivo手机", price: 3000 ,isActive: false },
+        { item: "华为手机", price: 2000 , isActive: false },
+        { item: "小米手机", price: 1000 , isActive: false },
+        { item: "诺基亚手机", price: 900 , isActive: false },
+      ],
+      Item_index:-1,
+      Item_Price:0
+    },
+    methods: {
+      isChange(index){
+        if(this.list[index].isActive==false){
+          this.list[index].isActive=true
+          
+        }else{
+          this.list[index].isActive = false
+        }
+        this.Item_index=index
+      },
+      isChangeColor(index){
+        return {active:this.list[index].isActive}
+      }
+    },
+    computed:{
+      Total_Price(){
+        if(this.Item_index!=-1){
+          if (this.list[this.Item_index].isActive == true) {
+            this.Item_Price += this.list[this.Item_index].price
+          } else {
+            this.Item_Price -= this.list[this.Item_index].price
+          }
+        }
+        return this.Item_Price;
+      }
+    }
+  })
+</script>
+</html>
