@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+这是app下的文字
+    <dfs></dfs>
+    <fds></fds>
+  </div>
+  <div id="web">
+这是web下的文字
+    <dfs></dfs>
+    <fds></fds>
+  </div>
+</body>
+<script src="../../JavaScript/vue.min.js"></script>
+<script>
+  /*
+  全局组件与局部组件的区别
+  1、全局组件可以用在任何一个被vue挂载的地方，而局部组件只能用在当前的挂载项内
+  2、全局组件的组件没有s，而局部组件有s
+  3、全局组件类似于一个方法，而局部组件类似于属性
+  */ 
+  Vue.component(
+    'dfs',{
+      template:`
+      <h1>你好，这是全局组件</h1>
+      `
+    }
+  )
+  const app=new Vue({
+    el:"#app"
+  })
+  const web = new Vue({
+      el: "#web",
+      components:{
+        fds:{
+          template:`
+          <h2>你好，这是局部组件</h2>
+          `
+        }
+      }
+    })
+</script>
+</html>
