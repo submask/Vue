@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 这是一个app组件 -->
+  <div id="app">
+    <app></app>
+  </div>
+  <!-- 这是一个 npm组件 -->
+  <div id="npm">
+    <npm></npm>
+  </div>
+</body>
+<script src="../../JavaScript/vue.js"></script>
+<script>
+//创建组件并注册
+// const app_cpn=Vue.component(
+//   'app',{
+//     template:`
+//     <h1>这是app组件</h1>
+//     `
+//   }
+// )
+const npm_ex=Vue.extend({
+    template: `
+    <div>
+      <h1>这是npm组件</h1>
+      <app></app>
+    </div>
+    `
+    ,
+      components:{
+        app:{
+          template:`
+          <h1>这是app组件</h1>
+          `
+        }
+      }
+    }
+)
+  //挂载 >>> 根组件
+  const app=new Vue({
+    el:"#app",
+    components:{
+      app:{
+        template:`
+        <h1>这是app组件</h1>
+        `
+      }
+    }
+  })
+  const npm=new Vue({
+    el:"#npm",
+    components:{
+      npm:npm_ex
+    }
+  })
+</script>
+</html>
