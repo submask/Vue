@@ -12,7 +12,8 @@
     <div class="item" v-cloak>
       <ul>
         <h2>商品列表</h2>
-        <li v-for="items,index in list" @click="isChange(index)" :class="isChangeColor(index)">
+        <li v-for="items,index in list" @click="isChange(index)" 
+        :class="isChangeColor(index)">
           <div class="left">{{items.item}}</div>
           <div class="right">{{items.price}}</div>
         </li>
