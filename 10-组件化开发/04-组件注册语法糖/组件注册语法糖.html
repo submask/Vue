@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <scp></scp>
+  </div>
+  <div id="asp">
+    <asps></asps>
+  </div>
+</body>
+<script src="../../JavaScript/vue.js"></script>
+<script>
+  // 全局注册组件
+  Vue.component(
+    'scp',{
+      template:`
+      <h1>你好，Vue</h1>
+      `
+    }
+  )
+  const vue=new Vue({
+    el:"#app"
+  })
+  const asp=new Vue({
+    el:"#asp",
+    components:{
+      'asps':{
+        template:`
+        <div>
+          <h1>asp标签</h1>  
+        </div>
+        `
+      }
+    }
+  })
+</script>
+</html>
