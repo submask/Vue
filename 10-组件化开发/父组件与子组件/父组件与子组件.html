@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <app></app>
+    <cpn></cpn>
+  </div>
+  <div id="cpn">
+
+  </div>
+</body>
+<script src="../../JavaScript/vue.min.js"></script>
+<script>
+  const son=Vue.extend({
+    template:`
+    <h1>这是子组件</h1>
+    `
+  })
+  const father=Vue.extend({
+    template:`
+    <h1>这是父组件</h1>
+    `,
+    components:{
+      cpn:son
+    }
+  }
+  )
+  const app=new Vue({
+    el:"#app",
+    components:{
+      'app':father
+    }
+  })
+</script>
+</html>

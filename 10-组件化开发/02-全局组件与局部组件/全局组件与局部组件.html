@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app_all">
+    <dps></dps>
+    <pds></pds>
+    <div id="app_part">
+      <pds></pds>
+      <div>
+        这是局部组件下<dps></dps>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../../JavaScript/vue.min.js"></script>
+<script>
+  Vue.component(
+    'dps',{
+      template:`
+      <h1>这是全局组件</h1>
+      `
+    }
+  )
+  const vue=new Vue({
+    el:"#app_all"
+  })
+  new Vue({
+    el:"#app_part",
+    components:{
+      pds:{
+        template:`
+        <h1>这是局部组件</h1>
+        `
+      }
+    }
+  })
+</script>
+</html>
