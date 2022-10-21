@@ -19,7 +19,7 @@
   </div>
   <template id="tpl">
     <div>
-      <h1>这是一个水标签</h1>
+      <h1>这是组件的水（静态）标签</h1>
       <h1>{{content}}</h1>
     </div>
     
@@ -31,7 +31,7 @@
     'apps',{
       template:"#tpl",
       data(){
-        return {content:"这是真实标签"}
+        return {content:"这是组件的真实（动态）标签"}
       }
     })
   // 这是一个Vue实例对象
