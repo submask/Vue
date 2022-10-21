@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+    注意点：
+    1、注意使用标签
+    2、注意使用组件时，不能使用Vue实例对象的数据，
+    必须在组件内建立一个data方法返回一个键值对内容
+    3、组件使用动态数据必须要有插值语法
+   -->
+  <div id="app">
+    <apps></apps>
+  </div>
+  <template id="tpl">
+    <div>
+      <h1>这是一个水标签</h1>
+      <h1>{{content}}</h1>
+    </div>
+    
+  </template>
+</body>
+<script src="../../JavaScript/vue.js"></script>
+<script>
+  Vue.component(
+    'apps',{
+      template:"#tpl",
+      data(){
+        return {content:"这是真实标签"}
+      }
+    })
+  // 这是一个Vue实例对象
+  const vue=new Vue({
+    el:"#app"
+  })
+</script>
+</html>
