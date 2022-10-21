@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <x-tpl></x-tpl>
+    <tpl></tpl>
+  </div>
+<!-- 使用script类型为x-template将模板抽离出来（app） -->
+<script type="x-template" id="x-tlp">
+    <h1>你好呀，这是使用x-template类型抽离组件内容</h1>
+</script>
+<template id="cls">
+  <h1>你好呀，这是使用template标签抽离组件内容</h1>
+</template>
+</body>
+
+<script src="../../JavaScript/vue.js"></script>
+<script>
+  // 通过script类型中的x-template将组件内容抽离出来（尽量不适用）
+  Vue.component(
+    'x-tpl',{
+      template:"#x-tlp"
+    }
+  )
+  //通过template标签将组件内容抽离出来(多使用)
+  Vue.component(
+    'tpl',{
+      template:"#cls"
+    }
+  )
+  const app=new Vue({
+    el:"#app"
+  })
+</script>
+</html>

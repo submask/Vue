@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<!-- 
+  抽离组件方法:
+  1、使用script类型中的x-template对组件进行抽离
+  2、使用template标签对组件进行抽离
+ -->
+<body>
+  <div id="app">
+    <!-- 易错点：忘记使用组件 -->
+    <xtpl></xtpl>
+    <tpl></tpl>
+  </div>
+  <script type="x-template" id="xtpl">
+    <h1>
+    你好呀,这是局部组件下使用x-template抽离组件
+    </h1>
+  </script>
+  <template id="tpl">
+    <h1>
+      你好呀,这是局部组件下使用template标签抽离组件
+    </h1>
+  </template>
+</body>
+<script src="../../JavaScript/vue.js"></script>
+<script>
+  //挂载注册组件
+  const vue = new Vue({
+    el: "#app",
+    components: {
+      xtpl: {
+        template: "#xtpl"
+      },
+      tpl: {
+        template: "#tpl"
+      }
+    }
+  })
+</script>
+
+</html>
