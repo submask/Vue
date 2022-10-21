@@ -6,16 +6,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+<!-- 
+最主要的目的在于函数进行每一次调用的时候，
+它所调用的当前的数据永远都不会干扰到其他的数据，
+永远传递的是你当前传递的值，如果组件中的data是一个对象的话，
+那么其他组件对表面上看起来是自己组件的data的属性所做的修改那么实际上修改的就是全部data属性的值
+其实就是不让值传递
+ -->
 <body>
   <div id="app">
-
+    <apps></apps>
   </div>
 </body>
+<template id="tip">
+  <h1>这里是动态属性标签：{{text}}</h1>
+</template>
 <script src="../../JavaScript/vue.js"></script>
 <script>
   // 这是一个Vue实例对象
+  // Vue.component(
+  //   'apps',{
+  //     template:"#tip",
+  //     data(){
+  //       return {text:"获取到的数据"}
+  //     }
+  //   }
+  // )
   const vue=new Vue({
-    el:"#app"
+    el:"#app",
+    components:{
+      'apps':{
+        template: "#tip",
+        // data方法可以执行
+        data(){
+          return {text:"这是局部变量动态获取到的变量"}
+        }
+        //data属性不可行
+        // data:{
+        //   text:"这是局部变量动态获取到的变量"
+        // }
+      }
+    }
   })
 </script>
 </html>
