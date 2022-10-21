@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 第一个组件 -->
+  <div id="app">
+    <!-- 使用组件 -->
+    <apps></apps>
+  </div>
+  <!-- 第二个组件 -->
+  <div id="nav">
+    <!-- 使用组件 -->
+    <navs></navs>
+  </div>
+</body>
+<script src="../../JavaScript/vue.js"></script>
+<script>
+  // 挂载组件app
+  const app=new Vue({
+    el:"#app",
+    //注册组件
+    components:{
+      "apps":{
+        // 使用ES6``符号如果有两个内容他只编译一个,那么就必须加上嵌套
+        template:`
+        <h1>你好，app组件</h1>
+        `
+      }
+    }
+  })
+  //挂载组件nav
+  const nav=new Vue({
+    el:"#nav",
+    components:{
+      "navs":{
+        template:`
+        <h1>你好，nav组件</h1>
+        `
+      }
+    }
+  })
+</script>
+</html>
