@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <apps></apps>
+  </div>
+</body>
+<template id="apps">
+  <h1>这是局部组件分离</h1>
+</template>
+<script src="../../JavaScript/vue.js"></script>
+<script>
+  const app=new Vue({
+    el:"#app",
+    components:{
+      'apps':{
+        template:"#apps"
+      }
+    }
+  })
+</script>
+</html>
