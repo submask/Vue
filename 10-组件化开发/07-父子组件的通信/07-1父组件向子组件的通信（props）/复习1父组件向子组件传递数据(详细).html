@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>父组件向子组件传递数据</title>
+</head>
+<body>
+  <!-- 这个是Vue实例所在的标签 -->
+  <div id="app">
+<!-- 使用组件 -->
+    <apps :new_list="list"></apps>
+  </div>
+  <!-- 使用template标签将组件模块分离，让组件的内容更有层次感 -->
+  <template id="tpl">
+    <div>
+      <h1>{{new_list}}</h1>
+    </div>
+  </template>
+</body>
+<!-- 导入vue.js文件 
+vue.js包含完整警告，适合开发
+vue.min.js 不包含完整警告，适合网站上线
+-->
+<script src="../../../JavaScript/vue.js"></script>
+<script>
+  // 定义一个Vue实例（父组件）
+  new Vue({
+    el:"#app",//el代表vue的挂载点
+    data:{//data代表vue数据存放地方
+      list:["这是内容1","这是内容2",
+    "这是内容3", "这是内容4",
+    "这是内容5", "这是内容6",
+    "这是内容7", "这是内容8",
+      ]//子组件想引用父组件就必须使用props
+    },
+    // 请注意：component代表的是全局组件,components代表局部组件
+    //请注意在组件中所添加的data，computed，method属性必须要在组件内，局部组件里面添加如上内容要在{}内
+    components:{//创建并注册组件（局部组件）
+      'apps':{//cpn代表注册组件后所使用的标签，template代表组件内部内容
+        template:"#tpl",
+        props:['new_list'],
+        data() {
+          return {
+            new_word: '你是一个组件'
+          }
+        }
+      },
+      // 组件也可以存放数据，可以和Vue实例对象一样拥有computend和methods方法
+      /* 组件的data属性为什么是一个方法，而不是属性呢？
+      答：主要是组件不能让data具有数据复用功能，即不可以赋值数据，但是修改的是全部的内容
+      而属性就是会修改全部内容
+      */
+      
+    }
+  })
+</script>
+</html>
