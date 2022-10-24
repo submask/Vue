@@ -23,11 +23,11 @@
   <div id="app">
 <!-- 使用组件 -->
     <apps :new_list="list" class="apps"></apps>
-    <apps :new_list="list" class="apps"></apps>
   </div>
   <!-- 使用template标签将组件模块分离，让组件的内容更有层次感 -->
   <template id="tpl">
     <div>
+      <!-- 组件化的遍历与判断一般都是在template标签里面设置的 -->
       <div v-for="item in new_list" >
         <div>{{item}}</div>
       </div>
@@ -58,7 +58,9 @@ vue.min.js 不包含完整警告，适合网站上线
           // new_list:Array
           new_list:{
             type:Array,
-            default:['1','2','3','4']
+            default(){
+              return []
+            }
           }
         },
         data() {
