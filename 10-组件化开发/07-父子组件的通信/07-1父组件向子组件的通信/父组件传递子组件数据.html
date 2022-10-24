@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- 
+    子组件使用父组件步骤
+    1、创建一个组件（局部/全局）
+    2、在子组件中设置props属性
+    格式props:['内容']
+    3、在应用子组件中添加属性：props属性=父组件的数据
+    4、在组件中使用mustache语法（插值语法）应用
+   -->
+</head>
+<body>
+  <div id="app">
+    <apps :new_content="content"></apps>
+  </div>
+</body>
+<template id="tpl">
+  <div>
+    <h1>{{new_content}}</h1>
+  </div>
+</template>
+<script src="../../../JavaScript/vue.js"></script>
+<script>
+  const vue=new Vue({
+    el:"#app",
+    data:{
+      content:["这是第一个内容","这是第二个内容","这是第三个内容"]
+    },
+    components:{
+      'apps':{
+        template:"#tpl",
+        props:['new_content'],
+      }
+    }
+  })
+</script>
+</html>
