@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <apps :new_lists="list">
+    </apps>
+  </div>
+</body>
+<template id="tpl">
+  <div>
+    <h1>{{new_lists}}</h1>
+  </div>
+</template>
+<script src="../../../JavaScript/vue.js"></script>
+<script>
+  const vue=new Vue({
+    el:"#app",
+    data:{
+      list:['列表项1', '列表项2', '列表项3', '列表项4', '列表项5', '列表项6']
+    },
+    components:{
+      'apps':{
+        template:"#tpl",
+        // 1、props:['new_lists']
+        props:{
+          new_lists:{
+            type:Array,
+            default(){
+              return ['None']
+            },
+          }
+        }
+      //   3、props:{
+      //     new_lists(val){
+      //       return ['列表项1'].indexOf(val)!=-1
+      //     }
+      //   }
+      }
+    }
+  })
+</script>
+</html>

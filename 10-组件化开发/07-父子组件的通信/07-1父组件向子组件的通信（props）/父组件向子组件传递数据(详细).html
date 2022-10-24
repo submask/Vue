@@ -5,17 +5,32 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>父组件向子组件传递数据</title>
+  <style>
+    .apps{
+      text-align: center;
+    }
+    .apps>div{
+      margin: 20px;
+      font-size: 24px;
+      width: 98%;
+      line-height: 50px;
+      background-color:antiquewhite;
+    }
+  </style>
 </head>
 <body>
   <!-- 这个是Vue实例所在的标签 -->
   <div id="app">
 <!-- 使用组件 -->
-    <apps :new_list="list"></apps>
+    <apps :new_list="list" class="apps"></apps>
+    <apps :new_list="list" class="apps"></apps>
   </div>
   <!-- 使用template标签将组件模块分离，让组件的内容更有层次感 -->
   <template id="tpl">
     <div>
-      <h1>{{new_list}}</h1>
+      <div v-for="item in new_list" >
+        <div>{{item}}</div>
+      </div>
     </div>
   </template>
 </body>
@@ -31,8 +46,6 @@ vue.min.js 不包含完整警告，适合网站上线
     data:{//data代表vue数据存放地方
       list:["这是内容1","这是内容2",
     "这是内容3", "这是内容4",
-    "这是内容5", "这是内容6",
-    "这是内容7", "这是内容8",
       ]//子组件想引用父组件就必须使用props
     },
     // 请注意：component代表的是全局组件,components代表局部组件
@@ -40,7 +53,14 @@ vue.min.js 不包含完整警告，适合网站上线
     components:{//创建并注册组件（局部组件）
       'apps':{//cpn代表注册组件后所使用的标签，template代表组件内部内容
         template:"#tpl",
-        props:['new_list'],
+        // props:['new_list'],
+        props:{
+          // new_list:Array
+          new_list:{
+            type:Array,
+            default:['1','2','3','4']
+          }
+        },
         data() {
           return {
             new_word: '你是一个组件'
