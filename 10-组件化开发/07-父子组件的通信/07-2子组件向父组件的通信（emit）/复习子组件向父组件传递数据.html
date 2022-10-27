@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <apps @clickme="ItemShower"></apps>
+  </div>
+  <template id="tpl">
+    <div>
+      <div v-for="item in list" @click="Onclick(item)">{{item.sname}}</div>
+    </div>
+  </template>
+</body>
+<script src="../../../JavaScript/vue.js"></script>
+<script>
+  const vue=new Vue({
+    el:"#app",
+    methods: {
+      ItemShower(item){
+        console.log(item.sname);
+      }
+    },
+    components:{
+      'apps':{
+        template:"#tpl",
+        data(){
+          return {
+            list:[
+              {sid:2001,sname:"陈晓",sclass:"C20T1"},
+              { sid: 2002, sname: "张三", sclass: "C20T1" },
+              { sid: 2003, sname: "李四", sclass: "C21T1" },
+              { sid: 2004, sname: "王五", sclass: "C20T4" },
+              { sid: 2005, sname: "姚六", sclass: "C21T3" },
+              { sid: 2006, sname: "费飞", sclass: "C22T1" },
+            ]
+          }
+        },
+        methods: {
+          Onclick(item){
+            this.$emit("clickme",item)
+          }
+        },
+      }
+    }
+  })
+</script>
+</html>
