@@ -8,13 +8,16 @@
 </head>
 <body>
   <div id="app">
-    <apps :new_lists="list">
+    <apps :new_-lists="list">
+      <!-- 
+        v-bind标签是不支持驼峰标识，因此在v-bind中如果要是使用驼峰标识就必须使用-进行连接转译
+      -->
     </apps>
   </div>
 </body>
 <template id="tpl">
   <div>
-    <h1>{{new_lists}}</h1>
+    <h1>{{new_Lists}}</h1>
   </div>
 </template>
 <script src="../../../JavaScript/vue.js"></script>
@@ -29,7 +32,7 @@
         template:"#tpl",
         // 1、props:['new_lists']
         props:{
-          new_lists:{
+          new_Lists:{
             type:Array,
             default(){
               return ['None']

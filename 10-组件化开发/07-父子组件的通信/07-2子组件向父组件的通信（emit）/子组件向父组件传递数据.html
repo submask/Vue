@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 父组件 -->
+  <div id="app">
+    <apps @emititem="ClickOn"></apps>
+    <!-- 在自定义事件中默认不写就是传递值，在dom中方法默认不写就是传递event对象 -->
+  </div>
+  <template id="tpl">
+    <div>
+      <button v-for="item in list" @click="ClickSubmit(item)">{{item.content}}</button>
+    </div>
+  </template>
+</body>
+<script src="../../../JavaScript/vue.js"></script>
+<script>
+  const vue=new Vue({
+    el:"#app",
+    methods:{
+      ClickOn(item){
+        alert(item.id+item.content)
+      }
+    },
+    components:{
+      'apps':{
+        template:"#tpl",
+        data(){
+          return {
+            list:[
+              { id: 721, content: "热门推荐" },
+              { id: 223, content: "手机数码" },
+              { id: 653, content: "家用电器" },
+              { id: 324, content: "电脑办公" },
+              //"热门推荐",'手机数码','家用电器','电脑办公'
+            ]//注意格式：子组件中如果要返回任意内容，那么就必须创建一个data对象返回内容
+          }
+        },
+        methods: {
+          ClickSubmit(item){
+            this.$emit('emititem',item)//发射一个事件给父组件
+          }
+        },
+      }
+    }
+  })
+</script>
+</html>

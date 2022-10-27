@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <apps :tpl="list" ></apps>
+  </div>
+  <template id="tpl">
+    <div>
+      <h1 v-for="item in tpl">{{item.name}}</h1>
+    </div>
+  </template>
+</body>
+<script src="../../../JavaScript/vue.js"></script>
+<script>
+  const vue=new Vue({
+    el:"#app",
+    data:{
+      list:{
+        201:{
+          name:"张华",
+          age:"20",
+          glass:"2-1",
+          info:"none"
+        },
+        202: {
+          name: "张立勇",
+          age: "21",
+          glass: "2-2",
+          info: "无"
+        },
+        203: {
+          name: "张五十",
+          age: "27",
+          glass: "2-6",
+          info: "none"
+        }
+        
+      }
+    },
+    components:{
+      'apps':{
+        template:"#tpl",
+        props:{
+          tpl:{
+            type:Object,
+            default(){
+              return {}
+            }
+          }
+        }
+      }
+    }
+  })
+</script>
+</html>
